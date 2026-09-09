@@ -1,18 +1,15 @@
-#O(N)
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         numSet = set(nums)
-        max_count = 0
-        length = 0
+        max_streak = 0
 
         for i in numSet:
-            if i-1 not in numSet:
-                length = 0
-                while (i+length) in numSet:
-                    length +=1
-                    max_count = max(max_count, length)
-        return max_count
-                
+            if i - 1 not in numSet:
+                streak = 1
+                current_num = i
 
-
-        
+                while (current_num + 1) in numSet:
+                    streak += 1
+                    current_num +=1
+                max_streak = max(max_streak, streak)
+        return max_streak
