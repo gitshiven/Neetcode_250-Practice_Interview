@@ -6,28 +6,17 @@ class Solution:
         for i in tokens:
             if i not in operators:
                 stack.append(int(i))
-                
-            elif i == "+":
-                num1 = stack.pop()
+            else:
                 num2 = stack.pop()
-                result = num1 + num2
-                stack.append(result)
-            elif i == "-":
                 num1 = stack.pop()
-                num2 = stack.pop()
-                result = num2-num1
+
+                if i == "+":
+                    result = num1 + num2
+                elif i == "-":
+                    result = num1-num2
+                elif i == "*":
+                    result = num1*num2
+                elif i == "/":
+                    result = int(num1/num2)
                 stack.append(result)
-            elif i == "*":
-                num1 = stack.pop()
-                num2 = stack.pop()
-                result = num2 * num1
-                stack.append(result)
-            elif i == "/":
-                num1 = stack.pop()
-                num2 = stack.pop()
-                result = int(num2 / num1)
-                stack.append(result)
-        return stack[0]
-            
-            
-            
+        return stack[-1]
